@@ -2,7 +2,7 @@
 
 # ch01: introduction
 
-## anatomy of a type class
+### Type class
 
 In cats a type class is represented by a trait with at least one type parameter
 
@@ -52,3 +52,38 @@ Import all:
 import cats._
 import cats.implicits._
 ```
+
+### Variance
+```
+trait Shape
+trait Circle extends Shape
+```
+- Covariant:
+  ```scala  
+  trait List[+A] {
+    def head: Option[A]
+    def tail: List[A]
+  }
+  
+  val circles: List[Circle] = ???
+  val shapes: List[Shape] = circles
+  ```
+- Contravariant:
+  ```scala
+  trait Printer[-A] {
+    def print(value: A): String
+  }
+  
+  val shaprePrinter: Printer[Shape] = ???
+  val circlePrinter: Printer[Circle] = shapePrinter
+  ```
+- Invariant:
+  ```
+  trait MutableList[A] {
+    def add(value: A): Unit
+    def get: A
+  }
+  ```
+### Basic Cats Type Classes
+- `Show`
+- `Eq`

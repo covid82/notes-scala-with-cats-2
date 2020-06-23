@@ -47,3 +47,8 @@ import cats.instances.int._
 // syntax
 import cats.syntax.show._
 ```
+Import all:
+```
+import cats._
+import cats.implicits._
+```

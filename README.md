@@ -4,14 +4,16 @@
 
 ## anatomy of a type class
 
-- There are three components of type class pattern:
-  - type class:
+In cats a type class is represented by a trait with at least one type parameter
+
+There are three components of type class pattern:
+- type class:
     ```scala
     trait Printer[A] {
       def print(value: A): String
     }
     ```
-  - type class instance:
+- type class instance:
     ```scala
     object PrinterInstances {
       implicit val intPrinter: Printer[Int] = new Printer[Int] {
@@ -19,19 +21,29 @@
       }
     }
     ```
-  - type class interface:
-    - interface object:
-      ```scala
-      object Printer {
-        def print[A](value: A)(implicit printer: Printer[A]): String = printer.print(value)
+- type class interface:
+  - interface object:
+    ```scala
+    object Printer {
+      def print[A](value: A)(implicit printer: Printer[A]): String = printer.print(value)
+    }
+    ```
+  - interface syntax:
+    ```scala
+    object PrinterSyntax {
+      implicit class PrinterOps[A](value: A) {
+        def print(implicit printer: Printer[A]): String = printer.print(value)
       }
-      ```
-    - interface syntax:
-      ```scala
-      object PrinterSyntax {
-        implicit class PrinterOps[A](value: A) {
-          def print(implicit printer: Printer[A]): String = printer.print(value)
-        }
-      }
-      ```
-- In cats a type class is represented by a trait with at least one type parameter
+    }
+    ```
+### Imports
+```scala
+// type class
+import cats.Show
+
+// instance
+import cats.instances.int._
+
+// syntax
+import cats.syntax.show._
+```

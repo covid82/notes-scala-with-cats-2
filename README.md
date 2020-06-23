@@ -78,7 +78,7 @@ trait Circle extends Shape
   val circlePrinter: Printer[Circle] = shapePrinter
   ```
 - Invariant:
-  ```
+  ```scala
   trait MutableList[A] {
     def add(value: A): Unit
     def get: A

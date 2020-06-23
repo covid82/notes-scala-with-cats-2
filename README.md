@@ -48,7 +48,7 @@ import cats.instances.int._
 import cats.syntax.show._
 ```
 Import all:
-```
+```scala
 import cats._
 import cats.implicits._
 ```

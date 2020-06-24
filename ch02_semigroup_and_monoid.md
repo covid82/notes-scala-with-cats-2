@@ -1,9 +1,12 @@
+## Semigroup
+
 ### Type class
 ```scala
 trait Semigroup[A] {
   @Op("|+|) def combine(x: A, y: A): A
 }
 ```
+
 ### Instances
 ```scala
 object Semigroup {
@@ -11,6 +14,11 @@ object Semigroup {
   implicit val stringSemigroup = new StringSemigroup
   class StringSemigroup extends Semigroup[String] {
     def combine(x: String, y: String): String = x + y
+  }
+
+  implicit def listSemigroup[A] = new ListSemigroup[A]
+  class ListSemigroup[A] extends Semigroup[List[A]] {
+    def combine(xs: List[A], ys: List[A]): String = xs ++ ys
   }
 
   implicit val intAdditionSemigroup = new IntAdditionSemigroup

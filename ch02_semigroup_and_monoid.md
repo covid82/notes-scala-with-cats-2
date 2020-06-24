@@ -3,9 +3,9 @@
 trait Semigroup[A] {
   @Op("|+|) def combine(x: A, y: A): A
 }
-```scala
-### Instances
 ```
+### Instances
+```scala
 object Semigroup {
 
   implicit val stringSemigroup = new StringSemigroup

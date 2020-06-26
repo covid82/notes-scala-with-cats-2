@@ -44,7 +44,24 @@ object Semigroup {
 ```
 
 ### Laws
-- Associativity law:
-  ```scala
-  (a |+| b) |+| c = a |+| (b |+| c)
-  ```
+```scala
+trait SemigroupLaws[A: Monoid] {
+  def associativity(x: A, y: A, z: A): Boolean =
+    (x |+| y) |+| z = x |+| (y |+| z)
+}
+```
+
+## Monoid
+### Type class
+```
+trait Monoid[A] extends Semigroup[A] {
+  def empty: A
+}
+```
+### Laws
+```
+trait MonoidLaws[A : Monoid] extends SemigroupLaws[A] {
+  def identityLaw(a: A): Boolean =
+    a |+| Monoid[A].empty == Monoid[A].empty |+| a == a
+}
+```

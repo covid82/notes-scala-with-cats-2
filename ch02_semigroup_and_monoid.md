@@ -74,7 +74,7 @@ trait Monoid[A] extends Semigroup[A] {
 }
 ```
 ### Instances
-```
+```scala
 object Monoid {
   class StringMonoid extends Monoid[String] with StringSemigroup {
     def empty: String = ""

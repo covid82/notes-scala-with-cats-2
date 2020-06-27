@@ -11,16 +11,19 @@ trait Semigroup[A] {
 ```scala
 object Semigroup {
 
+  // string
   implicit val stringSemigroup = new StringSemigroup
   class StringSemigroup extends Semigroup[String] {
     def combine(x: String, y: String): String = x + y
   }
 
+  // list
   implicit def listSemigroup[A] = new ListSemigroup[A]
   class ListSemigroup[A] extends Semigroup[List[A]] {
     def combine(xs: List[A], ys: List[A]): String = xs ++ ys
   }
 
+  // int
   implicit val intAdditionSemigroup = new IntAdditionSemigroup
   class IntAdditionSemigroup extends Semigroup[Int] {
     def combine(x: Int, y: Int): Int = x + y
@@ -31,6 +34,7 @@ object Semigroup {
     def combine(x: Int, y: Int): Int = x * y
   }
 
+  // boolean
   implicit val booleanCAndSemigroup = new BooleanAndSemigroup
   class BooleanAndSemigroup extends Semigroup[Boolean] {
     def combine(x: Boolean, y: Boolean): Boolean = x && y
@@ -51,9 +55,15 @@ object Semigroup {
     def combine(x: Boolean, y: Boolean): Boolean = ( !x && y ) || ( x && !y )
   }
 
-  implicit def setOrSemigroup[A] = new SetOrSemigroup[A]
-  class SetAndSemigroup[A] extends Semigroup[A] {
+  // set
+  implicit def setUnionSemigroup[A] = new SetUnionSemigroup[A]
+  class SetUnionSemigroup[A] extends Semigroup[A] {
     def combine(xs: Set[A], ys: Set[A]): Set[A] = xs union ys
+  }
+
+  implicit def setSymDiffSemigroup[A] = new SetSymDiffSemigroup[A]
+  class SetSymDiffSemigroup[A] extends Semigroup[A] {
+    def combine(xs: Set[A], ys: Set[A]): Set[A] = (xs diff ys) union (ys diff xs)
   }
 }
 ```
@@ -76,16 +86,30 @@ trait Monoid[A] extends Semigroup[A] {
 ### Instances
 ```scala
 object Monoid {
+  // string
   class StringMonoid extends Monoid[String] with StringSemigroup {
     def empty: String = ""
   }
+
+  // list
+  class ListMonoid[A] extends Monoid[A] with ListSemigroup[A] {
+    def empty: List[A] = List.empty[A]
+  }
+
+  // boolean
   class BooleanAndMonoid extends Monoid[Boolean] with BooleanAndSemigroup {
     def empty: Boolean = true
   }
   class BooleanOrMonoid extends Monoid[Boolean] with BooleanOrSemigroup {
     def empty: Boolean = false
   }
-  class SetOrMonoid[A] extends Monoid[Set[A]] with SetOrSemigroup[A] {
+
+  // set
+  class SetUnionMonoid[A] extends Monoid[Set[A]] with SetUnionSemigroup[A] {
+    def empty: Boolean = Set()
+  }
+
+  class SetSymDiffMonoid[A] extends Monoid[Set[A]] with SetSymDiffSemigroup[A] {
     def empty: Boolean = Set()
   }
 }

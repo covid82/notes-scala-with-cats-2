@@ -39,8 +39,3 @@ libraryDependencies += "org.scalatestplus" %% "scalacheck-1-14" % "3.1.0.0" % Te
 
 addCompilerPlugin("org.typelevel" %% "kind-projector" % "0.11.0" cross CrossVersion.full)
 ```
-
-##### ???
-```
-
-```

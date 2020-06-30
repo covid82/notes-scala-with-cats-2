@@ -2,7 +2,7 @@
 
 ### Type class
 ```scala
-trait Semigroup[A] {
+@typeclass trait Semigroup[A] {
   @Op("|+|) def combine(x: A, y: A): A
 }
 ```

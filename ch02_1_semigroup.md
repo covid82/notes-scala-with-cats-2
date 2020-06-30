@@ -1,4 +1,4 @@
-##### Create `io.covid82.fps.Semigroup` in `src/main/scala`:
+- Create `io.covid82.fps.Semigroup` in `src/main/scala`:
 ```scala
 package io.covid82.fps
 
@@ -26,7 +26,7 @@ trait SemigroupLaws {
 }
 ```
 
-##### Create `io.covid82.fps.SemigroupSpec` in `src/test/scala`:
+- Create `io.covid82.fps.SemigroupSpec` in `src/test/scala`:
 ```scala
 package io.covid82.fps
 

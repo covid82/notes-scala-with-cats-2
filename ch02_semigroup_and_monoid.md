@@ -72,7 +72,7 @@ object Semigroup {
 ```scala
 trait SemigroupLaws[A: Monoid] {
   def associativity(x: A, y: A, z: A): Boolean =
-    (x |+| y) |+| z = x |+| (y |+| z)
+    ((x |+| y) |+| z) == (x |+| (y |+| z))
 }
 ```
 

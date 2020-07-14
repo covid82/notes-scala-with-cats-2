@@ -1,0 +1,7 @@
+- Define `Functor` type class;
+- Define `Functor` laws;
+- Implement a test that checks `Functor` instances are compliant to the laws;
+- Implement derived functions (`lift`,`as`, `void`, `compose`);
+- Implement `Functor` instances for these types:
+  - `tree`
+  - `function`

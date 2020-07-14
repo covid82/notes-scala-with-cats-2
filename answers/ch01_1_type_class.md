@@ -70,7 +70,7 @@ trait Circle extends Shape
     def print(value: A): String
   }
   
-  val shaprePrinter: Printer[Shape] = ???
+  val shapePrinter: Printer[Shape] = ???
   val circlePrinter: Printer[Circle] = shapePrinter
   ```
 - Invariant:

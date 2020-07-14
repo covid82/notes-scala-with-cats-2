@@ -1,0 +1,1 @@
+# Define Monad type class;

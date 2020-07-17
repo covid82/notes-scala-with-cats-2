@@ -1,0 +1,7 @@
+- Define `MonadError` type class (with 4 methods);
+- Define Monad instances:
+  - `Eval`;
+  - `Writer`;
+  - `Reader`;
+  - `State`;
+  - `Tree`;

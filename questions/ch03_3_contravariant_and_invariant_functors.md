@@ -1,0 +1,3 @@
+- Define contravariant functor;
+- Define contravariant functor for `Printer` type;
+- Define `Printer` for `int` and `boolean`;

@@ -1,0 +1,4 @@
+- Define what is a type class and how is it represented in cats;
+- Implement `Printer` type class;
+- How classes are organized in cats?
+- What kinds of variance are there?

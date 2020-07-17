@@ -1,0 +1,9 @@
+- Define `Monad` type class;
+- Define `Monad` laws;
+- Implement a test that checks `Monad` instances are compliant to the laws;
+- Implement `Monad` instances for these types:
+  - `option`
+  - `list`
+  - `tree`
+- Define `map` via `pure` and `flatMap`;
+- Implement `identity` `Monad`;
